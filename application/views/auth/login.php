@@ -9,24 +9,26 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <form action="../../index3.html" method="post">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Email" id="email" name="email">
+            <form action="<?= base_url('auth'); ?>" method="post">
+                <div class="input-group mt-3">
+                    <input type="text" class="form-control" placeholder="Email" id="email" name="email" value="<?= set_value('email'); ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password" id="password" name="password">
+                <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                <div class="input-group mt-3">
+                    <input type="password" class="form-control" placeholder="Password" id="password" name="password" value="<?= set_value('password'); ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
                     </div>
                 </div>
-                <div class="row text-center">
+                <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+                <div class="row text-center mt-3">
                     <!-- /.col -->
                     <div class="col">
                         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
