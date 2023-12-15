@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="<?= base_url('assets') ?>/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets') ?>/dist/css/adminlte.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="<?= base_url('assets') ?>/plugins/toastr/toastr.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">

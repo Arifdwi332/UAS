@@ -22,6 +22,13 @@
 <script src="<?= base_url('assets') ?>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('asstes') ?>/dist/js/demo.js"></script>
+<!-- Toastr -->
+<script src="<?= base_url('asstes') ?>/toastr/toastr.min.js"></script>
+<script>
+    $('.toastrDefaultError').click(function() {
+        toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    });
+</script>
 </body>
 
 </html>

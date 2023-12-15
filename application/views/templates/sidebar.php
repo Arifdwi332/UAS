@@ -34,13 +34,16 @@
                            <!-- Sub menu -->
                            <?php
                             $menuId = $m['id'];
-                            $querySubMenu = "SELECT * FROM user_sub_menu 
-                                             WHERE menu_id = $menuId 
-                                             AND is_active = 1";
+                            $querySubMenu = "SELECT * 
+                                             FROM user_sub_menu JOIN user_menu
+                                             ON user_sub_menu.menu_id = user_menu.id
+                                             WHERE user_sub_menu.menu_id = $menuId 
+                                             AND user_sub_menu.is_active = 1 ";
                             $subMenu = $this->db->query($querySubMenu)->result_array();
                             ?>
 
                            <?php foreach ($subMenu as $sm) : ?>
+
                                <li class="nav-item">
                                    <a href="<?= base_url($sm['url']); ?>" class="nav-link">
                                        <i class="<?= $sm['icon']; ?>"></i>
@@ -53,7 +56,7 @@
 
                        <?php endforeach; ?>
 
-                       <li class="nav-item">
+                       <!-- <li class="nav-item">
                            <a href="#" class="nav-link">
                                <i class="nav-icon fas fa-solid fa-users"></i>
                                <p>
@@ -114,14 +117,15 @@
                        <li class="nav-header">Pengaturan</li>
                        <li class="nav-item">
                            <a href="<?= base_url('user'); ?>" class="nav-link">
-                               <i class="nav-icon fas fa-user"></i>
-                               <p>
-                                   Profil
-                               </p>
-                           </a>
-                       </li>
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Profil
+                            </p>
+                        </a>
+                    </li> -->
+                       <li class="nav-header">Pengaturan</li>
                        <li class="nav-item">
-                           <a href="<?= base_url('auth/logout'); ?>" class="nav-link active">
+                           <a href="<?= base_url('auth/logout'); ?>" class="nav-link">
                                <i class="nav-icon fas fa-sign-out-alt"></i>
                                <p class="text">Keluar</p>
                            </a>
