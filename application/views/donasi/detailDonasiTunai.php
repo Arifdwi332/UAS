@@ -22,17 +22,27 @@
          <!-- Profile Image -->
          <div class="card card-primary card-outline col-md-4">
              <div class="card-body box-profile">
-
-                 <h3 class="profile-username text-center"><?= $user['name']; ?></h3>
-
-                 <p class="text-muted text-center">PAMS</p>
-
                  <ul class="list-group list-group-unbordered mb-3">
-                     <li class="list-group-item">
-                         <b>Email</b> <a class="float-right"><?= $user['email']; ?></a>
+                     <li class="list-group">
+                         <b>Id Donatur</b> <a class="float-right"><?= $donasiTunai['donatur_id']; ?></a>
                      </li>
-                     <li class="list-group-item">
-                         <b>Role Id</b> <a class="float-right"><?= $user['role_id']; ?></a>
+                     <div class="row mt-3">
+                         <div class="col">
+                             <li class="list-group">
+                                 <b>Jumlah Uang</b> <a class="float-right"><?= $donasiTunai['jumlah']; ?></a>
+                             </li>
+                         </div>
+                         <div class="col">
+                             <li class="list-group">
+                                 <b>Terbilang</b> <a class="float-right"><?= $donasiTunai['terbilang']; ?></a>
+                             </li>
+                         </div>
+                     </div>
+                     <li class="list-group mt-3">
+                         <b>Keterangan</b> <a class="float-right"><?= $donasiTunai['keterangan']; ?></a>
+                     </li>
+                     <li class="list-group mt-5">
+                         <a href="<?= base_url('donasi/donasiTunai'); ?>" class="btn btn-primary">Ok</a>
                      </li>
                  </ul>
              </div>

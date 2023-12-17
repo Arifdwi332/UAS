@@ -28,14 +28,13 @@
                              <?= validation_errors(); ?>
                          </div>
                      <?php endif; ?>
-
                      <!-- alert berhasil -->
                      <?= $this->session->flashdata('message'); ?>
                      <div class="card">
                          <div class="card-header">
-                             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#submodal-lg">
+                             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#donaturmodal-lg">
                                  <i class="fas fa-plus"> </i>
-                                 Tambah Sub Menu
+                                 Tambah <?= $title; ?>
                              </a>
                          </div>
                          <!-- /.card-header -->
@@ -44,31 +43,27 @@
                                  <thead>
                                      <tr>
                                          <th style="width: 10px">No</th>
-                                         <th>Title</th>
-                                         <th>Menu</th>
-                                         <th>Url</th>
-                                         <th>Icon</th>
-                                         <th>Active</th>
+                                         <th>Nama</th>
+                                         <th>Alamat</th>
+                                         <th>No.Telp</th>
                                          <th>Aksi</th>
                                      </tr>
                                  </thead>
                                  <tbody>
                                      <?php $i = 1; ?>
-                                     <?php foreach ($subMenu as $sm) : ?>
+                                     <?php foreach ($donatur as $m) : ?>
                                          <tr>
                                              <td><?= $i; ?></td>
-                                             <td><?= $sm['title']; ?></td>
-                                             <td><?= $sm['menu']; ?></td>
-                                             <td><?= $sm['url']; ?></td>
-                                             <td><?= $sm['icon']; ?></td>
-                                             <td><?= $sm['is_active']; ?></td>
+                                             <td><?= $m['nama']; ?></td>
+                                             <td><?= $m['alamat']; ?></td>
+                                             <td><?= $m['no_telp']; ?></td>
                                              <td>
                                                  <div class="btn-group">
-                                                     <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ubahmodal-lg">
+                                                     <a href="<?= base_url('donatur/ubahDonatur/'); ?><?= $m['id']; ?>" class="btn btn-info">
                                                          <i class="fas fa-edit"> </i>
                                                          Ubah
                                                      </a>
-                                                     <a href="<?= base_url('menu/hapusSubmenu/'); ?><?= $sm['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin menghapus sub menu?')">
+                                                     <a href="<?= base_url('donatur/hapus/'); ?><?= $m['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin menghapus donatur?')">
                                                          <i class="fas fa-trash"> </i>
                                                          Hapus
                                                      </a>
@@ -87,47 +82,29 @@
      </section>
      <!-- /.content -->
  </div>
- <!-- modal tambah sub menu-->
- <div class="modal fade" id="submodal-lg">
+ <!-- modal -->
+ <div class="modal fade" id="donaturmodal-lg">
      <div class="modal-dialog modal-lg">
          <div class="modal-content">
              <div class="modal-header">
-                 <h4 class="modal-title">Tambah Sub Menu Baru</h4>
+                 <h4 class="modal-title">Daftarkan Donatur Baru</h4>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
-             <form action="<?= base_url('menu/submenu'); ?>" method="post">
+             <form action="<?= base_url('donatur'); ?>" method="post">
                  <div class="modal-body">
                      <div class="form-group">
-                         <label for="exampleInputEmail1">Nama Submenu</label>
-                         <input type="text" class="form-control" id="title" name="title" placeholder="Nama submenu">
+                         <label for="exampleInputEmail1">Nama Donatur</label>
+                         <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama donatur">
                      </div>
                      <div class="form-group">
-                         <div class="form-group">
-                             <label>Menu</label>
-                             <select class="form-control" name="menu_id" id="menu_id">
-                                 <option>Pilih Menu</option>
-                                 <?php foreach ($menu as $m) : ?>
-                                     <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
-                                 <?php endforeach; ?>
-                             </select>
-                         </div>
+                         <label for="exampleInputEmail1">Alamat Donatur</label>
+                         <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat donatur">
                      </div>
                      <div class="form-group">
-                         <label for="exampleInputEmail1">Icon Submenu</label>
-                         <input type="text" class="form-control" id="icon" name="icon" placeholder="Icon submenu">
-                     </div>
-                     <div class="form-group">
-                         <label for="exampleInputEmail1">Url Submenu</label>
-                         <input type="text" class="form-control" id="url" name="url" placeholder="Url submenu">
-                     </div>
-                     <div class="form-group">
-                         <label for="exampleInputEmail1">Is Active</label>
-                         <div class="form-check">
-                             <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
-                             <label class="form-check-label" for="is_active">Aktif ?</label>
-                         </div>
+                         <label for="exampleInputEmail1">No.Telp Donatur</label>
+                         <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No.telp donatur">
                      </div>
                  </div>
                  <div class="modal-footer justify-content-between">
@@ -140,4 +117,3 @@
      </div>
      <!-- /.modal-dialog -->
  </div>
- <!-- /.modal -->

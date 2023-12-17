@@ -28,14 +28,13 @@
                              <?= validation_errors(); ?>
                          </div>
                      <?php endif; ?>
-
                      <!-- alert berhasil -->
                      <?= $this->session->flashdata('message'); ?>
                      <div class="card">
                          <div class="card-header">
-                             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#submodal-lg">
+                             <a href="#" class="btn btn-success" data-toggle="modal" data-target="#donasibarangmodal-lg">
                                  <i class="fas fa-plus"> </i>
-                                 Tambah Sub Menu
+                                 Tambah <?= $title; ?>
                              </a>
                          </div>
                          <!-- /.card-header -->
@@ -44,31 +43,40 @@
                                  <thead>
                                      <tr>
                                          <th style="width: 10px">No</th>
-                                         <th>Title</th>
-                                         <th>Menu</th>
-                                         <th>Url</th>
-                                         <th>Icon</th>
-                                         <th>Active</th>
+                                         <th>Nama Donatur</th>
+                                         <th>Nama Barang</th>
+                                         <th>Jumlah</th>
+                                         <th>Keterangan</th>
+                                         <th>Cetak</th>
                                          <th>Aksi</th>
                                      </tr>
                                  </thead>
                                  <tbody>
                                      <?php $i = 1; ?>
-                                     <?php foreach ($subMenu as $sm) : ?>
+                                     <?php foreach ($donasiTunai as $m) : ?>
                                          <tr>
                                              <td><?= $i; ?></td>
-                                             <td><?= $sm['title']; ?></td>
-                                             <td><?= $sm['menu']; ?></td>
-                                             <td><?= $sm['url']; ?></td>
-                                             <td><?= $sm['icon']; ?></td>
-                                             <td><?= $sm['is_active']; ?></td>
+                                             <td><?= $m['nama']; ?></td>
+                                             <td><?= $m['jumlah']; ?></td>
+                                             <td><?= $m['terbilang']; ?></td>
+                                             <td><?= $m['keterangan']; ?></td>
+                                             <td>
+                                                 <a href="<?= base_url('donasi/cetakDonasiTunai/'); ?><?= $m['id']; ?>" class="btn btn-success" rel="noopener" target="_blank">
+                                                     <i class="fas fa-print"> </i>
+                                                     Cetak
+                                                 </a>
+                                             </td>
                                              <td>
                                                  <div class="btn-group">
-                                                     <a href="#" class="btn btn-info" data-toggle="modal" data-target="#ubahmodal-lg">
-                                                         <i class="fas fa-edit"> </i>
-                                                         Ubah
+                                                     <a href="<?= base_url('donasi/detailDonasiTunai/'); ?><?= $m['id']; ?>" class="btn btn-warning">
+                                                         <i class="fas fa-eye"> </i>
+                                                         Detail
                                                      </a>
-                                                     <a href="<?= base_url('menu/hapusSubmenu/'); ?><?= $sm['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin menghapus sub menu?')">
+                                                     <a href="#" class="btn btn-info">
+                                                         <i class="fas fa-edit"> </i>
+                                                         edit
+                                                     </a>
+                                                     <a href="<?= base_url('donasi/donasiTunaiHapus/'); ?><?= $m['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin menghapus donasi tunai?')">
                                                          <i class="fas fa-trash"> </i>
                                                          Hapus
                                                      </a>
@@ -87,50 +95,47 @@
      </section>
      <!-- /.content -->
  </div>
- <!-- modal tambah sub menu-->
- <div class="modal fade" id="submodal-lg">
+ <!-- modal-->
+ <div class="modal fade" id="donasibarangmodal-lg">
      <div class="modal-dialog modal-lg">
          <div class="modal-content">
              <div class="modal-header">
-                 <h4 class="modal-title">Tambah Sub Menu Baru</h4>
+                 <h4 class="modal-title">Tambah <?= $title; ?> Baru</h4>
                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">&times;</span>
                  </button>
              </div>
-             <form action="<?= base_url('menu/submenu'); ?>" method="post">
+             <form action="<?= base_url('donasi/donasiTunai'); ?>" method="post">
                  <div class="modal-body">
                      <div class="form-group">
-                         <label for="exampleInputEmail1">Nama Submenu</label>
-                         <input type="text" class="form-control" id="title" name="title" placeholder="Nama submenu">
+                         <label>Nama Donatur</label>
+                         <select class="form-control" name="donatur_id" id="donatur_id">
+                             <option>Pilih Nama</option>
+                             <?php foreach ($donatur as $m) : ?>
+                                 <option value="<?= $m['id']; ?>"><?= $m['nama']; ?></option>
+                             <?php endforeach; ?>
+                         </select>
                      </div>
-                     <div class="form-group">
-                         <div class="form-group">
-                             <label>Menu</label>
-                             <select class="form-control" name="menu_id" id="menu_id">
-                                 <option>Pilih Menu</option>
-                                 <?php foreach ($menu as $m) : ?>
-                                     <option value="<?= $m['id']; ?>"><?= $m['menu']; ?></option>
-                                 <?php endforeach; ?>
-                             </select>
+                     <div class="row mt-5">
+                         <div class="col">
+                             <div class="form-group">
+                                 <label for="exampleInputEmail1">Jumlah Nominal</label>
+                                 <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="Nominal">
+                             </div>
+                         </div>
+                         <div class="col">
+                             <div class="form-group">
+                                 <label for="exampleInputEmail1">Terbilang</label>
+                                 <input type="text" class="form-control" id="terbilang" name="terbilang" placeholder="conth : satu juta rupiah">
+                             </div>
                          </div>
                      </div>
                      <div class="form-group">
-                         <label for="exampleInputEmail1">Icon Submenu</label>
-                         <input type="text" class="form-control" id="icon" name="icon" placeholder="Icon submenu">
-                     </div>
-                     <div class="form-group">
-                         <label for="exampleInputEmail1">Url Submenu</label>
-                         <input type="text" class="form-control" id="url" name="url" placeholder="Url submenu">
-                     </div>
-                     <div class="form-group">
-                         <label for="exampleInputEmail1">Is Active</label>
-                         <div class="form-check">
-                             <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" checked>
-                             <label class="form-check-label" for="is_active">Aktif ?</label>
-                         </div>
+                         <label for="exampleInputEmail1">Keterangan</label>
+                         <textarea class="form-control" rows="3" id="keterangan" name="keterangan" placeholder="keterangan"></textarea>
                      </div>
                  </div>
-                 <div class="modal-footer justify-content-between">
+                 <div class=" modal-footer justify-content-between">
                      <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
                      <button type="submit" class="btn btn-primary">Simpan</button>
                  </div>

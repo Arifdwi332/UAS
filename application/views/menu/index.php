@@ -44,7 +44,7 @@
                                      <tr>
                                          <th style="width: 10px">No</th>
                                          <th>Menu</th>
-                                         <th>Action</th>
+                                         <th>Aksi</th>
                                      </tr>
                                  </thead>
                                  <tbody>
@@ -59,8 +59,8 @@
                                                          <i class="fas fa-edit"> </i>
                                                          edit
                                                      </a>
-                                                     <a href="<?= base_url('menu/hapus/'); ?><?= $m['id']; ?>" class="btn btn-danger">
-                                                         <i class="fas fa-trash" onclick="return confirm('Yakin menghapus sub menu?')"> </i>
+                                                     <a href="<?= base_url('menu/hapus/'); ?><?= $m['id']; ?>" class="btn btn-danger" onclick="return confirm('Yakin menghapus menu?')">
+                                                         <i class="fas fa-trash"> </i>
                                                          Hapus
                                                      </a>
                                                  </div>
@@ -105,4 +105,3 @@
      </div>
      <!-- /.modal-dialog -->
  </div>
- <!-- /.modal -->

@@ -15,18 +15,44 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?= base_url('assets') ?>/plugins/jquery/jquery.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?= base_url('assets') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="<?= base_url('asstes') ?>/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/jszip/jszip.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?= base_url('asstes') ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= base_url('assets') ?>/dist/js/adminlte.min.js"></script>
+<script src="<?= base_url('asstes') ?>/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('asstes') ?>/dist/js/demo.js"></script>
-<!-- Toastr -->
-<script src="<?= base_url('asstes') ?>/toastr/toastr.min.js"></script>
+<!-- Page specific script -->
 <script>
-    $('.toastrDefaultError').click(function() {
-        toastr.error('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
     });
 </script>
 </body>

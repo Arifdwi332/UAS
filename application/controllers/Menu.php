@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Menu extends CI_Controller
 {
     //security login
-    //security login
     public function __construct()
     {
         parent::__construct();
@@ -57,7 +56,7 @@ class Menu extends CI_Controller
         //query get menu menggunakan model
         $data['subMenu'] = $this->menu->getSubMenu();
 
-        //get data menu
+        //get data user_menu
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
         $this->form_validation->set_rules('title', 'Tenu', 'required');
