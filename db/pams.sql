@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2023 at 01:07 PM
+-- Generation Time: Dec 17, 2023 at 10:45 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -63,7 +63,8 @@ CREATE TABLE `donasi_tunai` (
 
 INSERT INTO `donasi_tunai` (`id`, `donatur_id`, `jumlah`, `terbilang`, `keterangan`) VALUES
 (1, 1, '1000000', 'satu juta rupiah', 'bosku'),
-(3, 4, '10000', 'sepuluh juta rupiah', 'buat beli makan');
+(3, 4, '10000', 'sepuluh juta rupiah', 'buat beli makan'),
+(4, 5, '99999', 'satu juta rupiah', 'asasas');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (6, 'owner', 'owner@gmail.com', 'default.jpg', '$2y$10$uPm3Cb12t2W89WugPA0TWe1ygm68i0VuS0GP7CvJlw.3RZcMgh1Kq', 1, 1, 1702634105),
-(7, 'admin', 'admin@gmail.com', 'default.jpg', '$2y$10$MqDlL07DqNHkfzcxdKNA8OK3hKawes69dckSgvLA1bn/bPriOfTBK', 2, 1, 1702634149);
+(7, 'admin', 'admin@gmail.com', 'default.jpg', '$2y$10$MqDlL07DqNHkfzcxdKNA8OK3hKawes69dckSgvLA1bn/bPriOfTBK', 2, 1, 1702634149),
+(8, 'superadmin', 'rftgfv@gmail.com', 'default.jpg', '$2y$10$GOKiI7tEfMeuaxJygsF.EO5HRUfbx7YqmtUlgtl9gV772uGRo../e', 2, 1, 1702798616);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,8 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (11, 1, 6),
 (12, 2, 6),
 (13, 1, 7),
-(14, 2, 7);
+(14, 2, 7),
+(15, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -158,7 +161,8 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (2, 'Admin'),
 (3, 'Menu'),
 (6, 'Donatur'),
-(7, 'Donasi');
+(7, 'Donasi'),
+(8, 'Report');
 
 -- --------------------------------------------------------
 
@@ -205,7 +209,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (4, 3, 'Submenu Manajemen', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
 (9, 6, 'Donatur', 'donatur', 'fas fa-fw fa-solid fa-users', 1),
 (10, 7, 'Donasi Barang', 'donasi/donasiBarang', 'fas fa-fw fa-box', 1),
-(11, 7, 'Donasi Tunai', 'donasi/donasiTunai', 'fas fa-fw fa-money-bill-wave', 1);
+(11, 7, 'Donasi Tunai', 'donasi/donasiTunai', 'fas fa-fw fa-money-bill-wave', 1),
+(12, 8, 'Report', 'report', 'fas fa-fw fa-file-pdf', 1);
 
 --
 -- Indexes for dumped tables
@@ -273,7 +278,7 @@ ALTER TABLE `donasi_barang`
 -- AUTO_INCREMENT for table `donasi_tunai`
 --
 ALTER TABLE `donasi_tunai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `donatur`
@@ -285,19 +290,19 @@ ALTER TABLE `donatur`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -309,7 +314,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
