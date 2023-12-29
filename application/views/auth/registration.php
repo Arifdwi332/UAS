@@ -2,14 +2,15 @@
     <div class="register-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
-                <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+                <a href="#" class="h1"><b>PAMS</b></a>
+                <h5>Panti Asuhan Manajeman Sistem</h5>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Register</p>
-
+                <p class="login-box-msg">Daftrakan akun</p>
+                <!-- digunakan untuk mengirimkan data ke controler auth function registration -->
                 <form action="<?= base_url('auth/registration'); ?>" method="post">
                     <div class="input-group mt-3">
-                        <input type="text" class="form-control" placeholder="Full name" id="name" name="name" value="<?= set_value('name'); ?>">
+                        <input type="text" class="form-control" placeholder="Nama lengkap" id="name" name="name" value="<?= set_value('name'); ?>">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -35,7 +36,7 @@
                         </div>
                     </div>
                     <div class="input-group mt-3">
-                        <input type="password" class="form-control" placeholder="Retype password" id="password2" name="password2">
+                        <input type="password" class="form-control" placeholder="Ulangi password" id="password2" name="password2">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -43,25 +44,14 @@
                         </div>
                     </div>
                     <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
-                    <div class="row mt-3">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                <label for="agreeTerms">
-                                    I agree to the <a href="#">terms</a>
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <div class="row">
+                    <div class="row mt-4">
                         <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
                         </div>
                         <!-- /.col -->
                     </div>
                     <div class="text-center mt-4">
-                        <a href="<?= base_url(); ?>Auth" class="text-center">I already have an account</a>
+                        <a href="<?= base_url(); ?>Auth" class="text-center">Sudah punya akun? Sillahkan login!</a>
                     </div>
                 </form>
             </div>
