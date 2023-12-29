@@ -2,14 +2,16 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="../../index2.html" class="h1"><b>PAMS</b></a>
+            <a href="#" class="h1"><b>PAMS</b></a>
             <h5>Panti Asuhan Manajemen Sistem</h5>
         </div>
         <div class="card-body">
             <p class="login-box-msg">Silahkan login!</p>
-
+            <!-- digunakan untuk memberikan umpan balik atau 
+            informasi kepada pengguna setelah suatu tindakan  -->
             <?= $this->session->flashdata('message'); ?>
-
+            <!-- formulir HTML dengan metode POST yang mengarahkan 
+            ke URL 'auth' pada saat pengiriman formulir -->
             <form action="<?= base_url('auth'); ?>" method="post">
                 <div class="input-group mt-3">
                     <input type="text" class="form-control" placeholder="Email" id="email" name="email" value="<?= set_value('email'); ?>">

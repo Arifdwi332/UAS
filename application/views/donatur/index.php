@@ -59,7 +59,7 @@
                                              <td><?= $m['no_telp']; ?></td>
                                              <td>
                                                  <div class="btn-group">
-                                                     <a href="<?= base_url('donatur/ubahDonatur/'); ?><?= $m['id']; ?>" class="btn btn-info">
+                                                     <a href="<?= base_url('donatur/ubah/'); ?><?= $m['id']; ?>" class="btn btn-info">
                                                          <i class="fas fa-edit"> </i>
                                                          Ubah
                                                      </a>

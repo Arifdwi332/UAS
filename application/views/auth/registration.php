@@ -7,7 +7,7 @@
             </div>
             <div class="card-body">
                 <p class="login-box-msg">Daftrakan akun</p>
-
+                <!-- digunakan untuk mengirimkan data ke controler auth function registration -->
                 <form action="<?= base_url('auth/registration'); ?>" method="post">
                     <div class="input-group mt-3">
                         <input type="text" class="form-control" placeholder="Nama lengkap" id="name" name="name" value="<?= set_value('name'); ?>">

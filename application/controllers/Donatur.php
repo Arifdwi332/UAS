@@ -33,6 +33,29 @@ class Donatur extends CI_Controller
             redirect('donatur');
         }
     }
+    public function ubah($id)
+    {
+        $data['title'] = 'Ubah Donatur';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->model('Donatur_model');
+        $data['donatur'] = $this->Donatur_model->getDonaturById($id);
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('no_telp', 'No_telp', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/navbar', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('donatur/ubah', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->Donatur_model->ubahDonatur();
+            redirect('donatur');
+        }
+    }
     public function hapus($id)
     {
         $this->db->where('id', $id);

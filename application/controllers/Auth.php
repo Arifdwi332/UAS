@@ -2,12 +2,15 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
-{
+{   //untuk mengeload library bawaan ci3 yg bernama form_validation 
+    //yang dimana construct ini bersifat publik dapat diakses
+    //di function manapun dalam controler auth
     public function __construct()
     {
         parent::__construct();
         $this->load->library('form_validation');
     }
+    //function milik Login
     public function index()
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
@@ -25,12 +28,13 @@ class Auth extends CI_Controller
 
     private function _login()
     {
+        //untuk menangkap data form login
         $email = $this->input->post('email');
         $password = $this->input->post('password');
-
+        //untuk mengambil data dari tabel user database 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
-        //jika validasinya ada
+        //section pengecekan password user yang aktif atau tidak
         if ($user) {
             //jika validasinya aktif
             if ($user['is_active'] == 1) {
@@ -82,6 +86,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
         } else {
+            //inputan dari field registration
             $data = [
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
@@ -91,7 +96,7 @@ class Auth extends CI_Controller
                 'is_active' => 1,
                 'date_created' => time()
             ];
-
+            //syntax untuk menginputkan ke database
             $this->db->insert('user', $data);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Selamat! Akunmu sudah berhasil didaftarkan. Silahkan login!</div>');
